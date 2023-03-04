@@ -7,9 +7,18 @@ SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
+MUSIC_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+
+PLAYLIST = [
+    os.path.join(MUSIC_DIR, "Soundtracks/Another-Part-Of-Me-8bit-shortened.mp3") ,
+    os.path.join(MUSIC_DIR, "Soundtracks/Bad-8bit-shortened.mp3") ,
+    os.path.join(MUSIC_DIR, "Soundtracks/Billie-Jean-8bit-shortened.mp3") ,
+    os.path.join(MUSIC_DIR, "Soundtracks/Smooth-Criminal-8bit-shortened.mp3") ,
+    os.path.join(MUSIC_DIR, "Soundtracks/Thriller-8bit-shortened.mp3")
+]
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-moonwalk-1.png")),
@@ -31,8 +40,7 @@ JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.pn
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 
 DUCKING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-lean.png"))
 ]
 
 DUCKING_SHIELD = [
