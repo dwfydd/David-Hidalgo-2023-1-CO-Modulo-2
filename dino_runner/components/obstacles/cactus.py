@@ -4,6 +4,13 @@ from dino_runner.components.obstacles.obstacle import Obstacle
 
 class Cactus(Obstacle):
     def __init__(self, image):
-        self.type = random.randint(0 , 2)
+        self.type = random.randint(0 , 5)
         super().__init__(image, self.type)
-        self.rect.y = 325
+      
+        if self.type in range(3, 5):
+            self.rect.y = 300
+        elif self.type == 5: #Tocó hacerle un condicional propio a la tercera imagen de cactus grandes porque seguía sin modificar su altura
+            self.rect.y = 300
+    
+        else:
+            self.rect.y = 325
