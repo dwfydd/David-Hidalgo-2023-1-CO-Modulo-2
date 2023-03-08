@@ -5,7 +5,11 @@ import pygame.mixer
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, PLAYLIST, FONT_STYLE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
-from dino_runner.components.menu import Menu
+from dino_runner.components.HUD.menu import Menu
+from dino_runner.components.HUD.try_again_menu import TryAgainMenu
+from dino_runner.components.HUD.score import Score
+
+
 
 
 class Game:
@@ -26,8 +30,9 @@ class Game:
         self.music = False
         self.obstacle_manager = ObstacleManager()
         self.menu = Menu('Press any key to start' , self.screen)
+        self.try_again_menu = TryAgainMenu('Try Again' , self.screen)
         self.running = False
-        self.score = 0
+        self.score = Score()
         self.death_count = 0
     
     def execute(self):
@@ -37,6 +42,8 @@ class Game:
             if not self.playing:
                 self.music = False
                 self.show_menu()
+                
+                
         
         pygame.display.quit()
         pygame.quit()
@@ -45,7 +52,6 @@ class Game:
         # Game loop: events - update - draw
         self.obstacle_manager.reset_obstacles()
         self.game_speed = self.GAME_SPEED
-        self.score = 0
         self.playing = True
         while self.playing:
             self.events()
@@ -62,7 +68,7 @@ class Game:
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
         self.obstacle_manager.update(self)
-        self.update_score()
+        self.score.update_score(self.game_speed)
     
     def soundtrack(self):
         if not self.music:
@@ -78,7 +84,7 @@ class Game:
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
-        self.draw_score()
+        self.score.draw_score(self.screen)
         pygame.display.update()
         #pygame.display.flip()
 
@@ -100,21 +106,11 @@ class Game:
             self.menu.draw(self.screen)
         
         else:
-            self.menu.update_message('Try again')
-            self.menu.draw(self.screen)
+            self.try_again_menu.draw(self.screen)
+            self.score.draw_score(self.screen)
+
 
         self.screen.blit(ICON, (half_screen_width - 50 , half_screen_height - 140))
         self.menu.update(self)
     
-    def update_score(self):
-        self.score +=1
 
-        if self.score % 100 == 0 and self.game_speed < 500:
-            self.game_speed +=1
-
-    def draw_score(self):
-        font = pygame.font.Font(FONT_STYLE , 30)
-        text = font.render(f'Score: {self.score}' , True , (0, 0, 0))
-        text_rect = text.get_rect()
-        text_rect.center = (1000, 50)
-        self.screen.blit(text, text_rect)
