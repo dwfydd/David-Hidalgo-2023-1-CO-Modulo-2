@@ -6,7 +6,7 @@ from dino_runner.components.power_ups.shield import Shield
 class PowerUpManager:
     def __init__(self):
         self.power_ups = []
-        self.when_appears = 0
+        self.when_appears = random.randint(200, 300)
         self.duration = random.randint(3, 5)
     
     def generate_power_up(self):

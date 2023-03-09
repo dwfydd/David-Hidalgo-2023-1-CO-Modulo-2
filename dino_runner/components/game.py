@@ -1,7 +1,7 @@
 import pygame
 import random
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, PLAYLIST
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, PLAYLIST, DEFAULT_TYPE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.menu import Menu
@@ -77,6 +77,7 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.power_up_manager.draw(self.screen)
+        self.draw_power_up_time()
         self.score.draw(self.screen)
         pygame.display.update()
         #pygame.display.flip()
@@ -104,7 +105,7 @@ class Game:
             self.menu.draw(self.screen, f'Highest score: {self.highest_score.count}', half_screen_width, 400, )
             self.menu.draw(self.screen, f'Total deaths: {self.death_count.count}', half_screen_width, 450, )
         
-        self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
+        self.screen.blit(ICON, (320 , -50))
         
         self.menu.update(self)
                 
@@ -121,3 +122,12 @@ class Game:
         self.score.reset()
         self.game_speed = self.GAME_SPEED
         self.player.reset()
+
+    def draw_power_up_time(self):
+        if self.player.has_power_up:
+            time_to_show = round((self.player.power_time_up - pygame.time.get_ticks()) /1000 , 2)
+            if time_to_show >= 0:
+                self.menu.draw(self.screen , f'{self.player.type.capitalize()} enabled for {time_to_show} seconds' , 500 , 50)
+            else:
+                self.has_power_up = False
+                self.player.type = DEFAULT_TYPE

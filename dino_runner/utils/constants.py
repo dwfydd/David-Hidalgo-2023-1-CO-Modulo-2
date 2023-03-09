@@ -10,7 +10,7 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 MUSIC_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "MJ-wallpaper2.png"))
 
 PLAYLIST = [
     os.path.join(MUSIC_DIR, "Soundtracks/Another-Part-Of-Me-8bit-shortened.mp3") ,
