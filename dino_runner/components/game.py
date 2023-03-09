@@ -36,6 +36,7 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
+                self.music = False
         pygame.display.quit()
         pygame.quit()
 
@@ -46,7 +47,7 @@ class Game:
         while self.playing:
             self.events()
             self.update()
-            self.soundtrack()
+            #Acá iba el método de la musica
             self.draw()
 
     def events(self):
@@ -66,7 +67,7 @@ class Game:
         if not self.music:
             self.current_soundtrack = random.choice(PLAYLIST)
             pygame.mixer.music.load(self.current_soundtrack)
-            pygame.mixer.music.set_volume(0.12)
+            pygame.mixer.music.set_volume(0.15)
             pygame.mixer.music.play(-1)
             self.music = True
 
@@ -118,9 +119,11 @@ class Game:
             self.highest_score.set_count(self.score.count)
             
     def reset_game(self):
+        self.power_up_manager.reset_power_ups()
         self.obstacle_manager.reset_obstacles()
         self.score.reset()
         self.game_speed = self.GAME_SPEED
+        self.soundtrack()
         self.player.reset()
 
     def draw_power_up_time(self):

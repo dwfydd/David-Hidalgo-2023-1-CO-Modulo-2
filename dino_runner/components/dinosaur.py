@@ -1,11 +1,11 @@
 import pygame 
 from pygame.sprite import Sprite
 
-from dino_runner.utils.constants import RUNNING , JUMPING, DUCKING, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD, DEFAULT_TYPE, SHIELD_TYPE
+from dino_runner.utils.constants import RUNNING , JUMPING, DUCKING, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD, DEFAULT_TYPE, SHIELD_TYPE, GUNN_TYPE, MJ_TOMMY_GUNN
 
-RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
-JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
-DUCKING_IMG = {DEFAULT_TYPE: DUCKING_SHIELD, SHIELD_TYPE: DUCKING_SHIELD}
+RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, GUNN_TYPE: MJ_TOMMY_GUNN}
+JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, GUNN_TYPE: MJ_TOMMY_GUNN}
+DUCKING_IMG = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, GUNN_TYPE: MJ_TOMMY_GUNN}
 
 
 class Dinosaur(Sprite):
@@ -66,9 +66,13 @@ class Dinosaur(Sprite):
         self.step_index += 1
     
     def jump(self):
-        self.image = JUMP_IMG[self.type]
+        if self.type == DEFAULT_TYPE:
+            self.image = JUMP_IMG[self.type]
+        elif self.type == SHIELD_TYPE:
+            self.image = JUMP_IMG[self.type][self.step_index // 5]
         self.dino_rect.y -= self.jump_speed * 4
         self.jump_speed -= 0.8
+        self.step_index += 1
 
         if self.jump_speed < -self.JUMP_SPEED:
                 self.dino_rect.y = self.Y_POS
@@ -76,10 +80,19 @@ class Dinosaur(Sprite):
                 self.jump_speed = self.JUMP_SPEED
     
     def ducking(self):
-        self.image = DUCKING_IMG[self.type][self.step_index // 5]
+        if self.type == DEFAULT_TYPE:
+            self.image = DUCKING_IMG[self.type]
+        elif self.type == SHIELD_TYPE:
+            
+            self.image = DUCKING_IMG[self.type][self.step_index // 7]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS + 30
+        if self.type == DEFAULT_TYPE:
+            self.dino_rect.y = self.Y_POS + 30
+        else: 
+            self.dino_rect.y = self.Y_POS
+            
+        self.step_index += 1
 
 
 

@@ -35,3 +35,5 @@ class Menu:
             
             elif event.type == pygame.KEYDOWN:
                 game.run()
+                
+    

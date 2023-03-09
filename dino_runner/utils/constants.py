@@ -20,14 +20,37 @@ PLAYLIST = [
     os.path.join(MUSIC_DIR, "Soundtracks/Thriller-8bit-shortened.mp3")
 ]
 
+DEATH_EFFECTS = [
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-1.mp3") ,
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-2.mp3") ,
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-3.mp3") ,
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-4.mp3") ,
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-5.mp3") ,
+    os.path.join(MUSIC_DIR, "Death_Effects/grunt-death-6.mp3") 
+]
+
+POWERUP_EFFECTS = [
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-1.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-2.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-3.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-4.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-5.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-6.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-7.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-8.mp3") ,
+    os.path.join(MUSIC_DIR, "PowerUp_Effects/grunt-9.mp3") 
+]
+
+TOMMY_GUN_EFFECT = os.path.join(MUSIC_DIR, "TOMMY-GUN-EFFECT.mp3")
+
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-moonwalk-1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-moonwalk-2.png")),
 ]
 
 RUNNING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-3.png"))
 ]
 
 RUNNING_HAMMER = [
@@ -36,16 +59,20 @@ RUNNING_HAMMER = [
 ]
 
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-jump.png"))
-JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
+JUMPING_SHIELD = [
+    
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-1.png")) ,
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-2.png")) 
+                  
+                  ]
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 
-DUCKING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-lean.png"))
-]
+DUCKING = pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-lean.png"))
+
 
 DUCKING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/MJ-shield-2.png")),
 ]
 
 DUCKING_HAMMER = [
@@ -53,18 +80,23 @@ DUCKING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
 ]
 
+MJ_TOMMY_GUNN = [
+    pygame.image.load(os.path.join(IMG_DIR, 'Dino/MJ-TommyGunn1.png')) ,
+    pygame.image.load(os.path.join(IMG_DIR, 'Dino/MJ-TommyGunn2.png'))
+]
+
 SMALL_CACTUS = [
     
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/SmallCactus3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Small-speakers1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Small-speakers2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Small-speakers3.png")),
     
 ]
 
 LARGE_CACTUS = [
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Cactus/LargeCactus3.png"))
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Large-speakers1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Large-speakers2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Cactus/Large-speakers3.png"))
 ]
 
 BIRD = [
@@ -75,6 +107,7 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+TOMMY_GUNN = pygame.image.load(os.path.join(IMG_DIR, 'Other/TommyGunn.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -85,3 +118,5 @@ DEFAULT_TYPE = "default"
 FONT_STYLE = "freesansbold.ttf"
 
 SHIELD_TYPE = 'shield'
+
+GUNN_TYPE = 'TommyGunn'
